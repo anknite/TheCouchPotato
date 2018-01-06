@@ -1,0 +1,118 @@
+Documentation:-
+
+The Couch Potato is a mini content management system for creating websites pertaining to maintaining information about various movie titles.
+
+It was created as part of a college assignment by Ankit Gadgil and Sayak Sarkar, students of Symbiosis Institute of Computer Studies and Research.
+
+
+Features:-
+	  A. The Couch Potato was created on the Linux platform using HTML, PHP and MySQL as the base technologies. 
+	  B. It recognizes three types of users, namely: anonymous user, registered user and the administrator.
+	  C. The main page has six main areas:-
+
+		1. Title Area:	   It is where the site's title is displayed along with the site logo in jpg format.
+
+		2. Login Area:	   This area contains the user login options, i.e., text areas for an user to enter his/her username and 
+				   password along with login and reset buttons.
+
+		3. Navigation Bar: The Navigation Bar consists of links for the various content categories. The categories can be changed 
+				   as per the site's requirements by the site administrator. The contents of the Navigation Bar can be 
+				   changed as per the system's requirements and can accomodate six major categories.
+
+		4. Side Bar: 	   The Side Bar consists of various options as per the user logged in:-
+
+				    a. For an anonymous user not logged into the system, the sidebar displays three primary links:- 
+					i. Home:   	    Link to the site's home page.
+				       ii. Genres: 	    Composite link, which expands further to provide a list of movie genres, each 
+							    contains links to show movies that belong to that particular genre.
+				      iii. About:  	    Link to site's help file, which consists of a detailed description of the site.
+
+				    b. For a registered user logged into the system, the sidebar displays five primary links:- 
+				  	i. Home:            Link to the site's home page.
+				       ii. Add New Content: Link to the system's content creation page. The content creation page allows 
+							    the user to add a new content, by providing the user with a blank form, in 
+							    which the details about the new content can be filled up.
+				      iii. Genres: 	    Composite link, which expands further to provide a list of movie genres, each 
+							    contains links to show movies that belong to that particular genre.
+				       iv. About: 	    Link to site's help file, which consists of a detailed description of the site.
+				  	v. Logout: 	    Link for the user to log out from the system.
+
+				    c. For the system administrator, the sidebar displays six primary links:- 
+				  	i. Home: 	    Link to the site's home page.
+				       ii. Add New Content: Link to the system's content creation page. The content creation page allows 
+							    the administrator to add new content, by providing the administrator with a 
+							    blank form, in which the details about the new content can be filled up.
+				      iii. Genres: 	    Composite link, which expands further to provide a list of movie genres, each 
+							    containing links to show movies that belong to that particular genre.
+				       iv. Administer: 	    Another composite link which provides a list of two secondary links namely: 
+							    Genres & Categories, and Configure Site. The Genres & Categories link takes 
+							    the administrator to the Genres & Categories modification page, where the 
+							    administrator can create, rename or delete genres and categories as per the 
+							    needs of the system.
+				  	v. About:           Link to site's help file, which consists of a detailed description of the site.
+				       vi. Logout:          Link for the administrator to log out from the system.
+
+
+Data Structure:-
+
+The Couch Potato stores all system data in a MySQL database, in the form of tables and relationships. The relationships among the tables are maintained by using Primary Key - Foreign Key Relations. 
+
+The tables used by the system are as follows:-
+	1. category
+	2. content
+	3. genre
+	4. image
+	5. user
+
+The table descriptions are as follows:-
+	1. category:	+----------+----------------------+------+-----+---------+----------------+
+			| Field    | Type                 | Null | Key | Default | Extra          |
+			+----------+----------------------+------+-----+---------+----------------+
+			| cat_id   | smallint(5) unsigned | NO   | PRI | NULL    | auto_increment |
+			| cat_name | varchar(255)         | NO   |     | NULL    |                |
+			+----------+----------------------+------+-----+---------+----------------+
+
+	2. content:	+------------------+----------------------+------+-----+---------+----------------+
+			| Field            | Type                 | Null | Key | Default | Extra          |
+			+------------------+----------------------+------+-----+---------+----------------+
+			| con_id           | smallint(5) unsigned | NO   | PRI | NULL    | auto_increment |
+			| con_title        | varchar(255)         | NO   |     | NULL    |                |
+			| con_tagline      | varchar(255)         | NO   |     | NULL    |                |
+			| con_release_date | date                 | NO   |     | NULL    |                |
+			| con_genre        | varchar(255)         | NO   |     | NULL    |                |
+			| con_language     | varchar(255)         | NO   |     | NULL    |                |
+			| con_cast         | varchar(255)         | NO   |     | NULL    |                |
+			| con_crew         | varchar(255)         | NO   |     | NULL    |                |
+			| con_prodhouse    | varchar(255)         | NO   |     | NULL    |                |
+			| con_category     | varchar(255)         | NO   |     | NULL    |                |
+			| con_article      | varchar(255)         | NO   |     | NULL    |                |
+			+------------------+----------------------+------+-----+---------+----------------+
+
+	3. genre:	+----------+----------------------+------+-----+---------+----------------+
+			| Field    | Type                 | Null | Key | Default | Extra          |
+			+----------+----------------------+------+-----+---------+----------------+
+			| gen_id   | smallint(5) unsigned | NO   | PRI | NULL    | auto_increment |
+			| gen_name | varchar(255)         | NO   |     | NULL    |                |
+			+----------+----------------------+------+-----+---------+----------------+
+	
+	4. image:	+----------+----------------------+------+-----+---------+----------------+
+			| Field    | Type                 | Null | Key | Default | Extra          |
+			+----------+----------------------+------+-----+---------+----------------+
+			| img_id   | smallint(5) unsigned | NO   | PRI | NULL    | auto_increment |
+			| img_name | varchar(255)         | NO   |     | NULL    |                |
+			| img_data | blob                 | NO   |     | NULL    |                |
+			+----------+----------------------+------+-----+---------+----------------+
+
+	5. user:	+--------------+----------------------+------+-----+---------+----------------+
+			| Field        | Type                 | Null | Key | Default | Extra          |
+			+--------------+----------------------+------+-----+---------+----------------+
+			| usr_id       | smallint(5) unsigned | NO   | PRI | NULL    | auto_increment |
+			| usr_fname    | varchar(255)         | NO   |     | NULL    |                |
+			| usr_lname    | varchar(255)         | NO   |     | NULL    |                |
+			| usr_dob      | date                 | NO   |     | NULL    |                |
+			| usr_gender   | varchar(1)           | NO   |     | NULL    |                |
+			| usr_uid      | varchar(50)          | NO   |     | NULL    |                |
+			| usr_password | varchar(50)          | NO   |     | NULL    |                |
+			| usr_email    | varchar(50)          | NO   |     | NULL    |                |
+			| usr_type     | tinyint(1)           | NO   |     | NULL    |                |
+			+--------------+----------------------+------+-----+---------+----------------+
